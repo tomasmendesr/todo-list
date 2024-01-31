@@ -8,6 +8,7 @@ import { CompleteTask } from './application/usecases/CompleteTask'
 import { ListTasks } from './application/usecases/ListTasks'
 import { SortTasksByDate } from './application/usecases/SortTasksByDate'
 import { TaskSummary } from './application/usecases/TaskSummary'
+import { SetTaskDeadline } from './application/usecases/SetTaskDeadline'
 import taskRoutes from './adapters/express/routes/taskRoutes'
 
 const app = express()
@@ -28,9 +29,10 @@ const completeTask = new CompleteTask(taskRepository)
 const listTasks = new ListTasks(taskRepository)
 const sortTasks = new SortTasksByDate(taskRepository)
 const taskSummary = new TaskSummary(taskRepository)
+const setTaskDeadline = new SetTaskDeadline(taskRepository)
 
 // config routes
-app.use('/tasks', taskRoutes(createTask, deleteTask, completeTask, listTasks, sortTasks, taskSummary))
+app.use('/tasks', taskRoutes(createTask, deleteTask, completeTask, setTaskDeadline, listTasks, sortTasks, taskSummary))
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`)

@@ -5,6 +5,7 @@ import { CompleteTask } from '../../../application/usecases/CompleteTask'
 import { ListTasks } from '../../../application/usecases/ListTasks'
 import { SortTasksByDate } from '../../../application/usecases/SortTasksByDate'
 import { TaskSummary } from '../../../application/usecases/TaskSummary'
+import { SetTaskDeadline } from '../../../application/usecases/SetTaskDeadline'
 
 const taskController = {
   createTask: (createTask: CreateTask) => async (req: Request, res: Response) => {
@@ -63,6 +64,22 @@ const taskController = {
     } catch (error) {
       res.status(500).json({ error: 'Error retrieving task summary' })
     }
+  },
+
+  setTaskDeadline: (setTaskDeadline: SetTaskDeadline) => async (req: Request, res: Response) => {
+    const taskId = Number(req.params.id)
+    const { deadline } = req.body
+
+    try {
+        const task = await setTaskDeadline.execute({taskId, deadline })
+        if (task) {
+          res.status(200).json(task)
+        } else {
+          res.status(404).json({ error: 'Task not found' })
+        }
+      } catch (error) {
+        res.status(500).json({ error: 'Error completing task' })
+      }
   },
 }
 

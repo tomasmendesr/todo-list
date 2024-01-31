@@ -38,4 +38,14 @@ export class SequelizeTaskRepository implements TaskRepository {
     const notCompleted = await Task.count({ where: { completed: false } })
     return { completed, notCompleted }
   }
+
+  async setDeadline(taskData: { taskId: number, deadline: Date }): Promise<Task | null> {
+    const task = await Task.findByPk(taskData.taskId)
+    if (task) {
+      task.deadline = taskData.deadline
+      await task.save()
+      return task
+    }
+    return null
+  }
 }

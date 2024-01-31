@@ -7,4 +7,5 @@ export interface TaskRepository {
   list(): Promise<Task[]>
   sort(): Promise<Task[]>
   summary(): Promise<{ completed: number, notCompleted: number }>
+  setDeadline(taskData: { taskId: number, deadline: Date}): Promise<Task | null>
 }

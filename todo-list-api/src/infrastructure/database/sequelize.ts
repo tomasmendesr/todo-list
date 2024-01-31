@@ -3,9 +3,9 @@ import { Task} from '../../domain/entities/Task'
 
 const sequelize = new Sequelize({
   dialect: 'postgres',
-  database: 'tu_database',
-  username: 'tu_usuario',
-  password: 'tu_contraseña',
+  database: 'todo_tasks',
+  username: 'postgres',
+  password: '',
   storage: ':memory:',
   models: [Task],
   logging: false,
