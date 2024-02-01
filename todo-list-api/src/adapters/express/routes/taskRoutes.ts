@@ -24,7 +24,7 @@ const taskRoutes = (
   router.put('/:id/complete', taskController.completeTask(completeTask))
   router.put('/:id/set-deadline', taskController.setTaskDeadline(setTaskDeadline))
   router.get('/', taskController.listTasks(listTasks))
-  router.get('/sort', taskController.sortTasks(sortTasksByDate))
+  router.get('/sort-by-deadline', taskController.sortTasks(sortTasksByDate))
   router.get('/summary', taskController.taskSummary(taskSummary))
 
   return router
