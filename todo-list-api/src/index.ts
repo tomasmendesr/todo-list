@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import sequelize from './infrastructure/database/sequelize'
+import cors from 'cors'
 import { SequelizeTaskRepository } from './infrastructure/repositories/SequelizeTaskRepository'
 import { CreateTask } from './application/usecases/CreateTask'
 import { DeleteTask } from './application/usecases/DeleteTask'
@@ -15,6 +16,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(bodyParser.json())
+app.use(cors())
 
 // sync Sequelize with database
 sequelize.sync()
