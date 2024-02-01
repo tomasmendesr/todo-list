@@ -24,7 +24,9 @@ export class SequelizeTaskRepository implements TaskRepository {
   }
 
   async list(): Promise<Task[]> {
-    return Task.findAll()
+    return Task.findAll({
+      order: [['id', 'ASC']],
+    })
   }
 
   async sort(): Promise<Task[]> {
