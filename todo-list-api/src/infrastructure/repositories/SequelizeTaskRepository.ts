@@ -2,8 +2,9 @@ import { Task } from '../../domain/entities/Task'
 import { TaskRepository } from '../../domain/repositories/TaskRepository'
 
 export class SequelizeTaskRepository implements TaskRepository {
-  async create(taskData: { description: string, deadline: Date }): Promise<Task> {
-    return Task.create(taskData)
+  async create(taskData: { description: string, deadline: Date, completed?: boolean }): Promise<Task> {
+    const defaultTaskData = { completed: false, ...taskData };
+    return Task.create(defaultTaskData)
   }
 
   async delete(id: number): Promise<void> {
