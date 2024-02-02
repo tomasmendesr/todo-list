@@ -5,31 +5,31 @@
 </template>
   
 <script>
-  import TaskCard from './TaskCard.vue';
-  
-  export default {
-    props: {
-      tasks: Array,
+import TaskCard from './TaskCard.vue';
+
+export default {
+  props: {
+    tasks: Array,
+  },
+  components: {
+    TaskCard,
+  },
+  methods: {
+    deleteTask(id) {
+      this.$emit('delete-task', id);
     },
-    components: {
-      TaskCard,
-    },
-    methods: {
-      deleteTask(id) {
-        this.$emit('delete-task', id);
-      },
-      markAsComplete(id) {
-        this.$emit('mark-as-complete', id)
-      }
+    markAsComplete(id) {
+      this.$emit('mark-as-complete', id)
     }
+  }
 }
 </script>
-  
-  <style scoped>
-  .task-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  </style>
+
+<style scoped>
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+</style>
   
