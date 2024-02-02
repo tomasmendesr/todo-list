@@ -47,14 +47,19 @@ Nuestra ToDo List debe tener las siguientes capacidades:
 
 The challenge is set up to run in a local environment, consuming the data from a local instance of PostgreSQL. 
 
+![image](https://kinsta.com/wp-content/uploads/2022/02/postgres-logo.png)
+
 ### Backend (Nodejs)
 
 The API follows clean architecture pattern.
 
-![image](https://kinsta.com/wp-content/uploads/2022/02/postgres-logo.png)
 ![image](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
 To initialize the backend, execute the following commands:
+
+⚠️ **Disclaimer:**
+Make sure PostgreSQL instance is running, otherwise the api is not going to work.
+
 1. Navigate to the `/todo-list-api` directory.
 2. Run the following commands:
 
@@ -121,7 +126,7 @@ The UI was built with Vue.js.
 
 ![image](https://www.arsys.es/blog/file/uploads/2020/04/01-vuejs.jpg)
 
-To initialize the backend, execute the following commands:
+To initialize the frontend, execute the following commands:
 1. Navigate to the `/todo-list-ui` directory.
 2. Run the following commands:
 
