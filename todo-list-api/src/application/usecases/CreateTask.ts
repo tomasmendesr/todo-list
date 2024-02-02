@@ -7,18 +7,16 @@ export class CreateTask {
   constructor(private taskRepository: TaskRepository) {}
 
   subscribe(observer: TaskObserver) {
-    this.observers.push(observer);
+    this.observers.push(observer)
   }
 
   async execute(taskData: { description: string, deadline: Date }) {
     const createdTask = await this.taskRepository.create(taskData)
     this.notifyObservers(createdTask.id)
-    return createdTask;
+    return createdTask
   }
 
   private notifyObservers(taskId: number) {
-    for (const observer of this.observers) {
-      observer.update(taskId)
-    }
+    this.observers.forEach((observer) => observer.update(taskId))
   }
 }
