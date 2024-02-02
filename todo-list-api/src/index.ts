@@ -11,6 +11,7 @@ import { SortTasksByDate } from './application/usecases/SortTasksByDate'
 import { TaskSummary } from './application/usecases/TaskSummary'
 import { SetTaskDeadline } from './application/usecases/SetTaskDeadline'
 import taskRoutes from './adapters/express/routes/taskRoutes'
+import { TaskObserverImpl } from './domain/observers/taskObserver'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -32,6 +33,10 @@ const listTasks = new ListTasks(taskRepository)
 const sortTasks = new SortTasksByDate(taskRepository)
 const taskSummary = new TaskSummary(taskRepository)
 const setTaskDeadline = new SetTaskDeadline(taskRepository)
+
+// observers
+const taskObserver = new TaskObserverImpl()
+createTask.subscribe(taskObserver)
 
 // config routes
 app.use('/tasks', taskRoutes(createTask, deleteTask, completeTask, setTaskDeadline, listTasks, sortTasks, taskSummary))
