@@ -1,20 +1,5 @@
 # # Challenge FullStack - Dev Sr TS
 
-  
-
-### Introduccion
-
-El siguiente challenge fue ideado para validar los skills de los candidatos en proceso de entrevista, de ninguna manera se trata de un proyecto real, ni se intenta extraer funcionalidades desarrolladas por los candidatos y utilizarlas en otros proyectos.
-
-Por favor, si elegiste hacer este challenge y no dispones del tiempo para completarlo, contactate con *people* a jobs@braintly.com.
-
-Vamos a tener en cuenta lo siguiente:
-
-- Lo perfecto es enemigo de lo bueno. Entregar algo siempre va a ser un buen inicio y mejor que no entregar nada.
-- Si no pudiste resolver parte de la consigna, no te preocupes, pero suma que nos compartas lo que pensaste o lo que pudiste hacer para poder comprender tu forma de encarar el problema.
-- No esperamos que sepas todas las respuestas de antemano. Investigar es un gran skill.
-- Es importante entregar en la fecha comprometida.
-
 ### Desafío
 #### **¿Cuál es el objetivo?**
 
