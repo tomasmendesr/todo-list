@@ -66,9 +66,12 @@ export default {
     },
     async handleCreateTask(newTask) {
       try {
-        await axios.post('http://localhost:3000/tasks', newTask);
-        this.fetchTasks();
-        this.fetchSummary();
+        const newTaskResponse = await axios.post('http://localhost:3000/tasks', newTask);
+        this.tasks.push(newTaskResponse.data);
+        this.summary = { 
+          ...this.summary,
+          notCompleted: this.summary.completed + 1
+        };
         this.closeCreateTaskModal();
       } catch (error) {
         console.error('Error creating task:', error);
@@ -77,8 +80,8 @@ export default {
     async deleteTask(id) {
       try {
         await axios.delete(`http://localhost:3000/tasks/${id}`);
+        this.tasks = this.tasks.filter(task => task.id !== id);
         this.fetchSummary();
-        this.fetchTasks();
       } catch (error) {
         console.error('Error deleting task:', error);
       }
@@ -86,8 +89,11 @@ export default {
     async markAsComplete(id) {
       try {
         await axios.put(`http://localhost:3000/tasks/${id}/complete`);
-        this.fetchSummary();
-        this.fetchTasks();
+        this.tasks.find(task => task.id === id).completed = true;
+        this.summary = { 
+          completed: this.summary.completed + 1,
+          notCompleted: this.summary.completed - 1
+        }
       } catch (error) {
         console.error('Error completing task:', error);
       }
