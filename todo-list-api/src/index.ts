@@ -22,6 +22,7 @@ app.use(cors())
 // sync Sequelize with database
 sequelize.sync()
 
+// TODO: move the following config to a new file
 // config SequelizeTaskRepository
 const taskRepository = new SequelizeTaskRepository()
 
@@ -39,6 +40,7 @@ const taskObserver = new TaskObserverImpl()
 createTask.subscribe(taskObserver)
 
 // config routes
+// TODO: the function taskRoutes is receiving too many args
 app.use('/tasks', taskRoutes(createTask, deleteTask, completeTask, setTaskDeadline, listTasks, sortTasks, taskSummary))
 
 app.listen(PORT, () => {
